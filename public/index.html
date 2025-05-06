@@ -17,22 +17,27 @@
     
     
     <main>
-      <section id="contact">
+      <section id="nouvelles-persooness">
         <h2>Formulaire d'enregistrement :</h2>
-        <form action="/enregistrer" method="POST" id="enregistrement-form" name="enregistrement">
+        <form action="/enregistrer" method="POST" id="formEnregistrement" name="enregistrement">
             <div class="formulaire">
                 <div class="party-gauche">
                     <div class="input">
                       <label for="name">Nom Complet :</label>
-                      <input type="text" id="name" name="name" required />
+                      <input type="text" name="nom" placeholder="Nom Complet" required />
                     </div>
                     <div class="input">
-                      <label for="telephone">Numéro de téléphone :</label>
-                      <input type="tel" id="telephone" name="telephone" required />
+                      <label for="date-de-naissance">Date de naissance</label>
+                      <input type="text" name="date-de-naissance" id="date-de-naissance" placeholder="ex: jj/mois/année"  required>
+                      <p id="formattedDate"></p>
+                    </div>
+                    <div class="input">
+                      <label for="telephone">Téléphone :</label>
+                      <input type="text" name="telephone" placeholder="Téléphone" required />
                     </div>
                     <div class="input">
                       <label for="adress">Adresse physique :</label>
-                      <input type="text" id="adress" name="adress" required />
+                      <input type="text" name="adress" placeholder="Adresse" required />
                     </div>
                     <div class="input">
                       <label>Ancienneté dans l'Orchestre :</label>
@@ -70,11 +75,15 @@
                     </div>
                     <div class="input">
                       <label for="second-choix">Votre second choix (vous pouvez en proposer un autre) :</label>
-                      <input type="text" name="second" id="second-choix" />
+                      <input type="text" name="secondChoix" id="second-choix" />
                     </div>
                     <div class="input">
-                      <label for="temps">Votre disponibilité (ex : de 12h à 15h je suis à la salle de sport) :</label>
-                      <input type="text" name="temps" id="temps" />
+                      <label for="second-choix">Quels sont tes centres d'interets:</label>
+                      <div><input type="radio" name="partition" id="musique" value="musique" /><label for="musique">musique</label></div>
+                      <div><input type="radio" name="partition" id="sports" value="sports" /><label for="sports">Sports</label></div>
+                      <div><input type="radio" name="partition" id="cinema" value="cinema" /><label for="cinema">cinema</label></div>
+                      <div><input type="radio" name="partition" id="randonner" value="oui" /><label for="randonner">autres</label></div>
+
                     </div>
                     <div class="input">
                       <label for="eglise">Votre église d'attache actuelle :</label>
@@ -82,8 +91,8 @@
                     </div>
                     <div class="input">
                       <label>Votre disponibilité à l'Orchestre :</label>
-                      <div><input type="radio" name="temps_orchestre" id="plein" value="Temps plein" /><label for="plein">À temps plein</label></div>
-                      <div><input type="radio" name="temps_orchestre" id="partiel" value="Temps partiel" /><label for="partiel">À temps partiel</label></div>
+                      <div><input type="radio" name="tempsOrchestre" id="plein" value="Temps plein" /><label for="plein">À temps plein</label></div>
+                      <div><input type="radio" name="tempsOrchestre" id="partiel" value="Temps partiel" /><label for="partiel">À temps partiel</label></div>
                     </div>
                     <div class="input">
                       <label>Niveau d'études :</label>
@@ -101,6 +110,8 @@
                   </div>
             </div>
           <button type="submit">Envoyer</button>
+          <button type="reset">Réinitialiser</button>
+          <p id="message" style="opacity:0; margin-top:10px;"></p>
         </form>
       </section>
     </main>
@@ -110,5 +121,32 @@
     <p>&copy; 2025 Orchestre de Kinshasa. Tous droits réservés.</p>
   </footer>
   <script src="script.js" defer></script>
+  <script>
+    document.getElementById('formEnregistrement').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      fetch('/enregistrer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.text())
+      .then(responseText => {
+        alert(responseText);
+        this.reset();  // Réinitialise le formulaire après l'envoi
+      })
+      .catch(error => {
+        console.error('Erreur:', error);
+      });
+    });
+  </script>
 </body>
 </html>

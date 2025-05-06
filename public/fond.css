@@ -46,6 +46,18 @@ h2 {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+.formulaire .input{
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-in-out forwards;
+}
+.formulaire .input:nth-child(odd) {
+  animation-delay: 0.2s;
+}
+
+.formulaire .input:nth-child(even) {
+  animation-delay: 0.4s;
+}
 
 .party-gauche, .party-droit {
   flex: 1 1 45%;
@@ -79,6 +91,17 @@ button[type="submit"] {
   display: block;
   margin: 2rem auto 0;
   padding: 12px 30px;
+  background-color: #0400e6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button[type="reset"] {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 12px 30px;
   background-color: #e60000;
   color: white;
   border: none;
@@ -88,8 +111,16 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #cc0000;
+  background-color: #151f8c;
 }
+button[type="reset"]:hover {
+  background-color: #831818;
+}
+button:focus{
+  background-color: white;
+  color: black;
+}
+
 
 footer {
   background-color: #b30000;
@@ -99,6 +130,26 @@ footer {
   margin-top: 2rem;
 }
 
+/*Animation*/
+@keyframes fadeInUp {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
 /* Responsive : passe en une colonne sur petit écran */
 @media (max-width: 768px) {
   .formulaire {
