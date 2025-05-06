@@ -19,7 +19,7 @@
     <main>
       <section id="nouvelles-persooness">
         <h2>Formulaire d'enregistrement :</h2>
-        <form action="/enregistrer" method="POST" id="formEnregistrement" name="enregistrement">
+        <form action="/submit" method="POST" id="formEnregistrement" name="enregistrement">
             <div class="formulaire">
                 <div class="party-gauche">
                     <div class="input">
@@ -28,8 +28,7 @@
                     </div>
                     <div class="input">
                       <label for="date-de-naissance">Date de naissance</label>
-                      <input type="text" name="date-de-naissance" id="date-de-naissance" placeholder="ex: jj/mois/année"  required>
-                      <p id="formattedDate"></p>
+                      <input type="date" name="date-de-naissance" id="date-de-naissance" required />
                     </div>
                     <div class="input">
                       <label for="telephone">Téléphone :</label>
@@ -79,10 +78,12 @@
                     </div>
                     <div class="input">
                       <label for="second-choix">Quels sont tes centres d'interets:</label>
-                      <div><input type="radio" name="partition" id="musique" value="musique" /><label for="musique">musique</label></div>
-                      <div><input type="radio" name="partition" id="sports" value="sports" /><label for="sports">Sports</label></div>
-                      <div><input type="radio" name="partition" id="cinema" value="cinema" /><label for="cinema">cinema</label></div>
-                      <div><input type="radio" name="partition" id="randonner" value="oui" /><label for="randonner">autres</label></div>
+                      <label for="interets">Quels sont tes centres d’intérêts :</label>
+<div><input type="radio" name="interets" id="musique" value="musique" /><label for="musique">Musique</label></div>
+<div><input type="radio" name="interets" id="sports" value="sports" /><label for="sports">Sports</label></div>
+<div><input type="radio" name="interets" id="cinema" value="cinema" /><label for="cinema">Cinéma</label></div>
+<div><input type="radio" name="interets" id="autres" value="autres" /><label for="autres">Autres</label></div>
+
 
                     </div>
                     <div class="input">
@@ -108,10 +109,14 @@
                       <input type="text" name="competence" id="competence" />
                     </div>
                   </div>
+                  <div>
+                    
+                  </div>
             </div>
           <button type="submit">Envoyer</button>
           <button type="reset">Réinitialiser</button>
-          <p id="message" style="opacity:0; margin-top:10px;"></p>
+          <p id="message" style="opacity:0; margin-top:10px; color:green;"></p>
+
         </form>
       </section>
     </main>
@@ -138,14 +143,11 @@
         },
         body: JSON.stringify(data)
       })
-      .then(response => response.text())
       .then(responseText => {
-        alert(responseText);
-        this.reset();  // Réinitialise le formulaire après l'envoi
-      })
-      .catch(error => {
-        console.error('Erreur:', error);
-      });
+  document.getElementById('message').style.opacity = 1;
+  document.getElementById('message').textContent = responseText;
+  document.getElementById('formEnregistrement').reset();
+});
     });
   </script>
 </body>
