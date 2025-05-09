@@ -3,8 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="fond.css" />
   <title>Orchestre de Kinshasa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .image-fond {
+      width: 100px;
+    }
+
+    form#formulaire {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .formulaire {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .party-gauche,
+    .party-droit {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .input {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .input input,
+    .input select {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .input div {
+      margin: 5px 0;
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .form-buttons button {
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #007BFF;
+      color: white;
+    }
+
+    .form-buttons button[type="reset"] {
+      background: #6c757d;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #666;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    #message {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -14,109 +115,101 @@
         <p>Orchestre de fanfare du Dieu Vivant<br><strong>ODFDV</strong></p>
       </div>
     </header>
-    
-    
+
     <main>
       <section id="nouvelles-persooness">
         <h2>Formulaire d'enregistrement :</h2>
-        <form action="/submit" method="POST" id="formEnregistrement" name="enregistrement">
-            <div class="formulaire">
-                <div class="party-gauche">
-                    <div class="input">
-                      <label for="name">Nom Complet :</label>
-                      <input type="text" name="nom" placeholder="Nom Complet" required />
-                    </div>
-                    <div class="input">
-                      <label for="date-de-naissance">Date de naissance</label>
-                      <input type="date" name="date-de-naissance" id="date-de-naissance" required />
-                    </div>
-                    <div class="input">
-                      <label for="telephone">Téléphone :</label>
-                      <input type="text" name="telephone" placeholder="Téléphone" required />
-                    </div>
-                    <div class="input">
-                      <label for="adress">Adresse physique :</label>
-                      <input type="text" name="adress" placeholder="Adresse" required />
-                    </div>
-                    <div class="input">
-                      <label>Ancienneté dans l'Orchestre :</label>
-                      <div><input type="radio" name="anciennete" id="apprenti" value="0-1 an" /><label for="apprenti">0 à 1 an</label></div>
-                      <div><input type="radio" name="anciennete" id="debutant" value="1-3 ans" /><label for="debutant">1 à 3 ans</label></div>
-                      <div><input type="radio" name="anciennete" id="avance" value="3-6 ans" /><label for="avance">3 à 6 ans</label></div>
-                      <div><input type="radio" name="anciennete" id="pro" value="6-9 ans" /><label for="pro">6 à 9 ans</label></div>
-                      <div><input type="radio" name="anciennete" id="expert" value="9+ ans" /><label for="expert">9 à nos jours</label></div>
-                    </div>
-                    <div class="input">
-                      <label>Êtes-vous baptisé ?</label>
-                      <div><input type="radio" name="baptise" id="b-oui" value="oui" /><label for="b-oui">Oui</label></div>
-                      <div><input type="radio" name="baptise" id="b-non" value="non" /><label for="b-non">Non</label></div>
-                    </div>
-                    
-                      <div class="input">
-                        <label>Votre premier choix parmi les instruments ci-dessous :</label>
-                        <div><input type="radio" name="instrument" id="trompette" value="Trompette" /><label for="trompette">Trompette</label></div>
-                        <div><input type="radio" name="instrument" id="trombone" value="Trombone" /><label for="trombone">Trombone</label></div>
-                        <div><input type="radio" name="instrument" id="tuba" value="Tuba" /><label for="tuba">Tuba</label></div>
-                        <div><input type="radio" name="instrument" id="alto" value="Alto" /><label for="alto">Alto</label></div>
-                        <div><input type="radio" name="instrument" id="basse" value="Basse" /><label for="basse">Basse</label></div>
-                        <div><input type="radio" name="instrument" id="bugle" value="Bugle" /><label for="bugle">Bugle</label></div>
-                        <div><input type="radio" name="instrument" id="baryton" value="Baryton" /><label for="baryton">Baryton</label></div>
-                        <div><input type="radio" name="instrument" id="saxophone" value="Saxophone" /><label for="saxophone">Saxophone</label></div>
-                      </div>
-                  </div>
-        
-                  <div class="party-droit">
-                    <div class="input">
-                      <label>Lisez-vous la partition musicale ?</label>
-                      <div><input type="radio" name="partition" id="partition-oui-1" value="oui" /><label for="partition-oui-1">Oui</label></div>
-                      <div><input type="radio" name="partition" id="partition-non-2" value="non" /><label for="partition-non-2">Non</label></div>
-                      <div><input type="radio" name="partition" id="evolution" value="evolution" /><label for="evolution">En évolution</label></div>
-                    </div>
-                    <div class="input">
-                      <label for="second-choix">Votre second choix (vous pouvez en proposer un autre) :</label>
-                      <input type="text" name="secondChoix" id="second-choix" />
-                    </div>
-                    <div class="input">
-                      <label for="second-choix">Quels sont tes centres d'interets:</label>
-                      <label for="interets">Quels sont tes centres d’intérêts :</label>
-<div><input type="radio" name="interets" id="musique" value="musique" /><label for="musique">Musique</label></div>
-<div><input type="radio" name="interets" id="sports" value="sports" /><label for="sports">Sports</label></div>
-<div><input type="radio" name="interets" id="cinema" value="cinema" /><label for="cinema">Cinéma</label></div>
-<div><input type="radio" name="interets" id="autres" value="autres" /><label for="autres">Autres</label></div>
-
-
-                    </div>
-                    <div class="input">
-                      <label for="eglise">Votre église d'attache actuelle :</label>
-                      <input type="text" name="eglise" id="eglise" />
-                    </div>
-                    <div class="input">
-                      <label>Votre disponibilité à l'Orchestre :</label>
-                      <div><input type="radio" name="tempsOrchestre" id="plein" value="Temps plein" /><label for="plein">À temps plein</label></div>
-                      <div><input type="radio" name="tempsOrchestre" id="partiel" value="Temps partiel" /><label for="partiel">À temps partiel</label></div>
-                    </div>
-                    <div class="input">
-                      <label>Niveau d'études :</label>
-                      <div><input type="radio" name="etudes" id="bac" value="Bac" /><label for="bac">Bac</label></div>
-                      <div><input type="radio" name="etudes" id="bac3" value="Bac +3" /><label for="bac3">Bac +3</label></div>
-                      <div><input type="radio" name="etudes" id="bac5" value="Bac +5" /><label for="bac5">Bac +5</label></div>
-                      <div><input type="radio" name="etudes" id="master" value="Master" /><label for="master">Master</label></div>
-                      <div><input type="radio" name="etudes" id="eleve" value="Élève" /><label for="eleve">Élève</label></div>
-                      <div><input type="radio" name="etudes" id="autre" value="Autre" /><label for="autre">Autre</label></div>
-                    </div>
-                    <div class="input">
-                      <label for="competence">Vos compétences en dehors de la musique :</label>
-                      <input type="text" name="competence" id="competence" />
-                    </div>
-                  </div>
-                  <div>
-                    
-                  </div>
+        <form action="/api/enregistrer" method="POST" id="formulaire">
+          <div class="formulaire">
+            <div class="party-gauche">
+              <div class="input">
+                <label for="name">Nom Complet :</label>
+                <input type="text" name="nom" placeholder="Nom Complet" required />
+              </div>
+              <div class="input">
+                <label for="date-de-naissance">Date de naissance</label>
+                <input type="date" name="date-de-naissance" required />
+              </div>
+              <div class="input">
+                <label for="telephone">Téléphone :</label>
+                <input type="text" name="telephone" placeholder="Téléphone" required />
+              </div>
+              <div class="input">
+                <label for="adress">Adresse physique :</label>
+                <input type="text" name="adresse" placeholder="Adresse" required />
+              </div>
+              <div class="input">
+                <input type="text" name="anciennete" placeholder="Ancienneté" required>
+              </div>
+              <div class="input">
+                <select name="batise" required>
+                  <option value="">Batisé ?</option>
+                  <option value="oui">Oui</option>
+                  <option value="non">Non</option>
+                </select>
+              </div>
+              <div class="input">
+                <label>Choix d'instrument :</label>
+                <select name="instrument" required>
+                  <option value="">Choix parmi les instruments</option>
+                  <option value="trompette">Trompette</option>
+                  <option value="trombone">Trombone</option>
+                  <option value="tuba">Tuba</option>
+                  <option value="autres">Autres</option>
+                </select>
+              </div>
+              <div class="input">
+                <label>Lisez-vous la partition musicale ?</label>
+                <div><input type="radio" name="partiti" value="oui" /> Oui</div>
+                <div><input type="radio" name="partiti" value="non" /> Non</div>
+                <div><input type="radio" name="partiti" value="evolution" /> En évolution</div>
+              </div>
             </div>
-          <button type="submit">Envoyer</button>
-          <button type="reset">Réinitialiser</button>
-          <p id="message" style="opacity:0; margin-top:10px; color:green;"></p>
 
+            <div class="party-droit">
+              
+              <div class="input">
+                <label for="second-choix">Votre second choix :</label>
+                <input type="text" name="secondChoix" />
+              </div>
+              <div class="input">
+                <label>Centres d’intérêts :</label>
+                <div><input type="radio" name="interets" value="musique" /> Musique</div>
+                <div><input type="radio" name="interets" value="sports" /> Sports</div>
+                <div><input type="radio" name="interets" value="cinema" /> Cinéma</div>
+                <div><input type="radio" name="interets" value="autres" /> Autres</div>
+              </div>
+              <div class="input">
+                <label for="eglise">Votre église d'attache :</label>
+                <input type="text" name="eglise" />
+              </div>
+              <div class="input">
+                <label>Disponibilité à l'Orchestre :</label>
+                <div><input type="radio" name="tempsOrchestre" value="Temps plein" /> À temps plein</div>
+                <div><input type="radio" name="tempsOrchestre" value="Temps partiel" /> À temps partiel</div>
+              </div>
+              <div class="input">
+                <label>Niveau d'études :</label>
+                <div><input type="radio" name="etudes" value="Bac" /> Bac</div>
+                <div><input type="radio" name="etudes" value="Bac +3" /> Bac +3</div>
+                <div><input type="radio" name="etudes" value="Bac +5" /> Bac +5</div>
+                <div><input type="radio" name="etudes" value="Master" /> Master</div>
+                <div><input type="radio" name="etudes" value="Élève" /> Élève</div>
+                <div><input type="radio" name="etudes" value="Autre" /> Autre</div>
+              </div>
+              <div class="input">
+                <label for="competence">Compétences hors musique :</label>
+                <input type="text" name="competence" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-buttons">
+            <button type="submit">Envoyer</button>
+            <button type="reset">Réinitialiser</button>
+          </div>
+
+          <p id="message" style="opacity:0;">Message envoyé avec succès.</p>
         </form>
       </section>
     </main>
@@ -125,30 +218,5 @@
   <footer>
     <p>&copy; 2025 Orchestre de Kinshasa. Tous droits réservés.</p>
   </footer>
-  <script src="script.js" defer></script>
-  <script>
-    document.getElementById('formEnregistrement').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const formData = new FormData(this);
-      const data = {};
-      formData.forEach((value, key) => {
-        data[key] = value;
-      });
-
-      fetch('/enregistrer', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(responseText => {
-  document.getElementById('message').style.opacity = 1;
-  document.getElementById('message').textContent = responseText;
-  document.getElementById('formEnregistrement').reset();
-});
-    });
-  </script>
 </body>
 </html>

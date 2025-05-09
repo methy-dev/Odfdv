@@ -1,47 +1,39 @@
-async function chargerMembres() {
-  const res = await fetch('/membres');
-  const membres = await res.json();
-  const tbody = document.querySelector('#membresTable tbody');
-  tbody.innerHTML = '';
+document.getElementById('enregistrementForm').addEventListener('submit', async (event) => {
+  event.preventDefault(); // Empêche la soumission classique du formulaire
 
-  membres.forEach(m => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${m.nom}</td>
-      <td>${m.telephone}</td>
-      <td>${m.instrument}</td>
-      <td>${m.date_enregistrement}</td>
-      <td>
-        <button onclick="supprimer(${m.id})">🗑 Supprimer</button>
-        <button onclick="modifier(${m.id}, '${m.nom}')">✏ Modifier</button>
-      </td>
-    `;
-    tbody.appendChild(tr);
+  // Récupérer toutes les données du formulaire
+  const formData = new FormData(event.target);
+  const data = {};
+
+  // Transformer FormData en un objet simple
+  formData.forEach((value, key) => {
+    data[key] = value;
   });
-}
 
-async function supprimer(id) {
-  if (confirm('Supprimer ce membre ?')) {
-    await fetch(`/membres/${id}`, { method: 'DELETE' });
-    chargerMembres();
+  // Log des données envoyées pour vérifier
+  console.log('Données envoyées:', data);
+
+  // Envoi de la requête POST à l'API
+  try {
+    const response = await fetch('http://localhost:3000/api/enregistrer', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data), // Convertir l'objet data en JSON
+    });
+
+    const result = await response.json();
+
+    // Vérification de la réponse du serveur
+    if (result.success) {
+      alert('Enregistrement réussi !');
+      document.getElementById('enregistrementForm').reset(); // Réinitialiser le formulaire après succès
+    } else {
+      alert('Erreur : ' + result.message);
+    }
+  } catch (error) {
+    console.error('Erreur d\'enregistrement:', error);
+    alert('Erreur d\'enregistrement');
   }
-}
-
-async function modifier(id, ancienNom) {
-  const nouveauNom = prompt("Entrez le nouveau nom :", ancienNom);
-  if (!nouveauNom) return;
-
-  const data = await fetch(`/membres`).then(r => r.json());
-  const membre = data.find(m => m.id === id);
-  membre.nom = nouveauNom;
-
-  await fetch(`/membres/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(membre)
-  });
-
-  chargerMembres();
-}
-
-chargerMembres();
+});

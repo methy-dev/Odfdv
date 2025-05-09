@@ -1,183 +1,152 @@
-* {
-    box-sizing: border-box;
-}
+/* public/style.css */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-}
-.container {
-    position: relative;
+    margin: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #fff;
+  }
+  
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  button {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: darkred;
+  }
+  
+  /* Style de base du tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table, th, td {
+    border: 1px solid black;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  button {
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: darkred;
+  }
+  
+  /* Style de la modale */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-}
-header {
-    background: #2c3e50;
-    color: #ecf0f1;
-    padding: 20px 0;
-    text-align: center;
-}
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-nav a {
-    color: #ecf0f1;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    margin: 10% auto;
+    width: 90%;
+    max-width: 500px;
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .close:hover,
+  .close:focus {
+    color: black;
     text-decoration: none;
-    font-weight: bold;
-}
-nav a:hover {
-    text-decoration: underline;
-    color: #3498db;
-}
-main {
-    padding: 20px;
-    max-width: 800px;
-    margin: auto;
-    z-index: 1;
-}
-section {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-h2 {
-    color: #34495e;
-}
-.concert {
-    background: #ecf0f1;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-left: 5px solid #3498db;
-    border-radius: 4px;
-}
-.concert h3 {
-    margin: 0;
-}
-
-/* Albums */
-.albums {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-.album img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-/* Boutique */
-#boutique {
-    margin-top: 60px;
-    text-align: center;
-}
-.produits {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-.produit {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 15px;
-    transition: transform 0.3s;
-}
-.produit:hover {
-    transform: scale(1.05);
-}
-.produit img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-.produit h3 {
-    margin: 10px 0 5px;
-}
-.produit button {
-    margin-top: 10px;
-    background: #2ecc71;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 30px;
     cursor: pointer;
-}
-.produit button:hover {
-    background: #27ae60;
-}
-
-/* Musique */
-#audio {
-    text-align: center;
-    padding: 30px;
-    background: #f0f8ff;
-    border-radius: 10px;
-    margin-top: 40px;
-}
-.audio-player {
-    margin-top: 20px;
-}
-audio {
-    width: 100%;
-    max-width: 600px;
-}
-
-/* Formulaire Contact */
-form {
-    display: flex;
-    flex-direction: column;
-}
-label {
-    margin: 10px 0 5px;
-    font-weight: bold;
-}
-input[type="text"],
-input[type="email"],
-textarea {
-    padding: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    margin-bottom: 10px;
-}
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-    border-color: #3498db;
-    outline: none;
-}
-button {
-    background: #3498db;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-button:hover {
-    background: #2980b9;
-}
-
-/* Footer */
-footer {
-    background: #2c3e50;
-    color: #ecf0f1;
-    text-align: center;
-    padding: 15px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-
+  }
+  
+  /* ✅ Style responsive pour petit écran */
+  @media screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    thead {
+      display: none;
+    }
+  
+    tr {
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+    }
+  
+    td {
+      position: relative;
+      padding-left: 50%;
+      text-align: left;
+    }
+  
+    td::before {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      width: 45%;
+      white-space: nowrap;
+      font-weight: bold;
+      color: #555;
+    }
+  
+    td:nth-of-type(1)::before { content: "ID"; }
+    td:nth-of-type(2)::before { content: "Nom"; }
+    td:nth-of-type(3)::before { content: "Date de Naissance"; }
+    td:nth-of-type(4)::before { content: "Téléphone"; }
+    td:nth-of-type(5)::before { content: "Adresse"; }
+    td:nth-of-type(6)::before { content: "Instrument"; }
+    td:nth-of-type(7)::before { content: "Actions"; }
+  }
+  @media print {
+    button, .actions, .modal {
+      display: none !important;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td, th {
+      border: 1px solid #000;
+      padding: 8px;
+    }
+  }  
