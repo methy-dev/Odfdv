@@ -1,4 +1,26 @@
 {
+<<<<<<< HEAD
+=======
+  "name": "orchestre-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "npm rebuild better-sqlite3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/methy-dev/odfdv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/methy-dev/odfdv/issues"
+  },
+  "homepage": "https://github.com/methy-dev/odfdv#readme",
+>>>>>>> 7f78bce0e1835c63c8f7840624c2f8ecbe716c08
   "dependencies": {
     "body-parser": "^2.2.0",
     "dotenv": "^16.5.0",
