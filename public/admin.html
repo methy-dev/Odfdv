@@ -101,17 +101,18 @@
           const tr = document.createElement('tr');
           
           tr.innerHTML = `
-            <td>${membre.id}</td>
-            <td>${membre.nom}</td>
-            <td>${membre.date_de_naissance}</td>
-            <td>${membre.telephone}</td>
-            <td>${membre.adresse}</td>
-            <td>${membre.instrument}</td>
-            <td>
+              <td data-label="ID">${membre.id}</td>
+              <td data-label="Nom">${membre.nom}</td>
+              <td data-label="Date de Naissance">${membre.date_de_naissance}</td>
+              <td data-label="Téléphone">${membre.telephone}</td>
+              <td data-label="Adresse">${membre.adresse}</td>
+              <td data-label="Instrument">${membre.instrument}</td>
+              <td data-label="Actions">
               <button onclick="voirDetails(${membre.id})">Voir Détails</button>
               <button onclick="supprimerMembre(${membre.id})">Supprimer</button>
-            </td>
-          `;
+              </td>
+            `;
+
           
           tableauBody.appendChild(tr);
         });
